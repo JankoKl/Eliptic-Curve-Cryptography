@@ -3,11 +3,11 @@ This is a simple Elliptic Curve Cryptography (ECC) demo application built using 
 
 # Features
 
-# Generate ECC Keys: Generate a private and public key pair using the SECP256K1 elliptic curve.
-# Message Signing: Sign a message using the generated private key and produce a digital signature.
-# Send Message: Simulate sending a signed message in a conversation interface.
-# Verify Public Key: Verify the format and correctness of a public key.
-# Verify Signature: Verify the authenticity of the message using the public key and digital signature.
+-Generate ECC Keys: Generate a private and public key pair using the SECP256K1 elliptic curve.
+-Message Signing: Sign a message using the generated private key and produce a digital signature.
+-Send Message: Simulate sending a signed message in a conversation interface.
+-Verify Public Key: Verify the format and correctness of a public key.
+-Verify Signature: Verify the authenticity of the message using the public key and digital signature.
 
 # How It Works
 
