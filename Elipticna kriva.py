@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import font as tkFont
 from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives import hashes
@@ -113,7 +114,17 @@ def send_new_message():
 # Kreiranje glavnog prozora
 root = tk.Tk()
 root.title("Demo Kriptografija Eliptične Krive")
-root.geometry("600x400")
+root.attributes("-fullscreen", True)
+
+
+
+# Postupak za izlazak iz fullscreen moda (Escape dugme)
+def exit_fullscreen(event):
+    root.attributes("-fullscreen", False)
+    exit_button.destroy()  # Ukloni dugme za izlazak
+
+root.bind("<Escape>", exit_fullscreen)
+
 
 # Polje za unos poruke
 message_label = tk.Label(root, text="Unesite poruku:")
@@ -172,7 +183,10 @@ verify_public_button.pack()
 verify_signature_button = tk.Button(root, text="Verifikuj potpis", command=verify_signature, state=tk.DISABLED)  # Početno onemogućeno
 verify_signature_button.pack()
 
-
+# Dugme za izlazak iz aplikacije
+font_style = tkFont.Font(family="Helvetica", size=16, weight="bold")
+exit_button = tk.Button(root, text="Izađi", command=root.quit, width=6, height=3, bg="red", fg="white", font=font_style)
+exit_button.place(relx=1.0, rely=0.0, anchor='ne', x=-10, y=10)
 
 
 stanko_private_key = None
@@ -183,7 +197,7 @@ marko_public_key = None
 message_sent = False
 
 
-# ugme za slanje nove poruke
+# Dugme za slanje nove poruke
 send_new_button = tk.Button(root, text="Pošalji novu poruku", command=send_new_message, state=tk.DISABLED)
 send_new_button.pack()
 
