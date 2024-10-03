@@ -126,6 +126,8 @@ def exit_fullscreen(event):
 root.bind("<Escape>", exit_fullscreen)
 
 
+
+
 # Polje za unos poruke
 message_label = tk.Label(root, text="Unesite poruku:")
 message_label.pack()
@@ -183,11 +185,6 @@ verify_public_button.pack()
 verify_signature_button = tk.Button(root, text="Verifikuj potpis", command=verify_signature, state=tk.DISABLED)  # Početno onemogućeno
 verify_signature_button.pack()
 
-# Dugme za izlazak iz aplikacije
-font_style = tkFont.Font(family="Helvetica", size=16, weight="bold")
-exit_button = tk.Button(root, text="Izađi", command=root.quit, width=6, height=3, bg="red", fg="white", font=font_style)
-exit_button.place(relx=1.0, rely=0.0, anchor='ne', x=-10, y=10)
-
 
 stanko_private_key = None
 stanko_public_key = None
@@ -197,8 +194,55 @@ marko_public_key = None
 message_sent = False
 
 
+# Funkcija za resetovanje aplikacije
+def reset_application():
+    global sent_message, sent_signature, marko_public_key
+
+    # Resetovanje globalnih varijabli
+    sent_message = None
+    sent_signature = None
+    marko_public_key = None
+
+    # Očisti unos za Markov javni ključ
+    marko_public_key_entry.delete(0, tk.END)
+
+    # Očisti polja
+    message_entry.config(state=tk.NORMAL)
+    message_entry.delete(0, tk.END)
+
+    signature_entry.config(state=tk.NORMAL)
+    signature_entry.delete(0, tk.END)
+
+    keys_display.config(state=tk.NORMAL)
+    keys_display.delete(1.0, tk.END)
+    keys_display.config(state=tk.DISABLED)
+
+    conversation_text.config(state=tk.NORMAL)
+    conversation_text.delete(1.0, tk.END)
+    conversation_text.config(state=tk.DISABLED)
+
+    status_label.config(text="", fg="green")
+
+    # Resetovanje dugmadi
+    sign_button.config(state=tk.DISABLED)
+    send_text_button.config(state=tk.DISABLED)
+    send_signature_button.config(state=tk.DISABLED)
+    verify_public_button.config(state=tk.DISABLED)
+    verify_signature_button.config(state=tk.DISABLED)
+    send_new_button.config(state=tk.DISABLED)
+
+
+# Dugme za izlazak iz aplikacije
+font_style = tkFont.Font(family="Helvetica", size=16, weight="bold")
+exit_button = tk.Button(root, text="Izađi", command=root.quit, width=6, height=3, bg="red", fg="white", font=font_style)
+exit_button.place(relx=1.0, rely=0.0, anchor='ne', x=-10, y=10)
+
 # Dugme za slanje nove poruke
 send_new_button = tk.Button(root, text="Pošalji novu poruku", command=send_new_message, state=tk.DISABLED)
 send_new_button.pack()
+
+# Kreiranje "Nova prepiska" dugmeta
+new_conversation_button = tk.Button(root, text="Nova prepiska", command=reset_application)
+new_conversation_button.pack()
 
 root.mainloop()
