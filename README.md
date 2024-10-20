@@ -1,4 +1,4 @@
-# Eliptic Curve Cryptography
+# Eliptic Curve Cryptography [![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://www.python.org/)
 This is a simple Elliptic Curve Cryptography (ECC) demo application built using Tkinter for the graphical user interface and cryptography library for ECC operations. It allows users to generate keys, sign messages, and verify digital signatures, simulating secure communication between two users.
 
 ## Features
