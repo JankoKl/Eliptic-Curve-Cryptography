@@ -2,7 +2,7 @@
 
 # Eliptic Curve Cryptography 
 This is a simple Elliptic Curve Cryptography (ECC) demo application built using Tkinter for the graphical user interface and cryptography library for ECC operations. It allows users to generate keys, sign messages, and verify digital signatures, simulating secure communication between two users.
-
+![screenshot](screenshot.png)
 ## Features
 
 ##### -Generate ECC Keys: Generate a private and public key pair using the SECP256K1 elliptic curve.
