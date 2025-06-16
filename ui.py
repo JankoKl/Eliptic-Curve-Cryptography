@@ -93,19 +93,15 @@ class ECC_UIElements:
     def update_keys_display(self, public_key, private_key):
         self.keys_display.config(state=tk.NORMAL)
         self.keys_display.delete(1.0, tk.END)
-
+    
         self.keys_display.insert(tk.END, "Public Key:\n")
         self.keys_display.insert(tk.END, public_key.public_bytes(
-            encoding=serialization.Encoding.PEM,
-            format=serialization.PublicFormat.SubjectPublicKeyInfo
-        ).decode('utf-8'))
-
-        self.keys_display.insert(tk.END, "\n\nPrivate Key:\n")
-        self.keys_display.insert(tk.END, private_key.private_bytes(
-            encoding=serialization.Encoding.PEM,
-            format=serialization.PrivateFormat.PKCS8,
-            encryption_algorithm=serialization.NoEncryption()
-        ).decode('utf-8'))
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PublicFormat.SubjectPublicKeyInfo
+    ).decode('utf-8'))
+    
+    # Only show that private key exists, not the actual key
+        self.keys_display.insert(tk.END, "\n\nPrivate Key: [GENERATED - HIDDEN]")
         self.keys_display.config(state=tk.DISABLED)
 
     # Method to display the generated signature
